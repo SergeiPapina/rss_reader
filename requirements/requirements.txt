@@ -1,0 +1,18 @@
+
+beautifulsoup4==4.9.3  # https://pypi.org/project/beautifulsoup4/
+
+requests==2.25.1  # https://pypi.org/project/requests/
+selenium==3.141.0  # https://github.com/SeleniumHQ/selenium
+
+flake8==3.9.2
+
+pytest==6.2.4 # https://pypi.org/project/pytest/
+pytest-cov==2.12.1  # https://github.com/pytest-dev/pytest-cov
+pytest-html==1.22.1
+pytest-mock==3.6.1 # https://pypi.org/project/pytest-mock/
+pytest-sugar==0.9.4  # https://github.com/Frozenball/pytest-sugar
+
+simplejson==3.16.0 # https://simplejson.readthedocs.io/en/latest/
+pre-commit==2.15.0
+black==21.11b0
+pathlib==1.0.1

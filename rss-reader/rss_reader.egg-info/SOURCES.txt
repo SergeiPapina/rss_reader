@@ -1,0 +1,9 @@
+MANIFEST.in
+pyproject.toml
+setup.py
+requirements/requirements.txt
+rss-reader/rss_reader.egg-info/PKG-INFO
+rss-reader/rss_reader.egg-info/SOURCES.txt
+rss-reader/rss_reader.egg-info/dependency_links.txt
+rss-reader/rss_reader.egg-info/requires.txt
+rss-reader/rss_reader.egg-info/top_level.txt

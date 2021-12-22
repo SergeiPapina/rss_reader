@@ -143,8 +143,10 @@ class RssReaderClass:
         self.logger.info('parse is successfully done')
         return 0
 
-
-if __name__ == '__main__':
+def main():
     rss = RssReaderClass()
     args = rss.get_args()
     rss.parse(args.source, args.limit)
+
+if __name__ == '__main__':
+    main()

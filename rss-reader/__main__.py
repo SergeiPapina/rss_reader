@@ -1,6 +1,4 @@
-from .rss_reader import RssReaderClass
+from .rss_reader import RssReaderClass, main
 
 if __name__ == '__main__':
-    rss = RssReaderClass()
-    args = rss.get_args()
-    rss.parse(args.source, args.limit)
+    main()

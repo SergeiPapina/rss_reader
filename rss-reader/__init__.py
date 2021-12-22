@@ -1,1 +1,1 @@
-from .rss_reader import RssReaderClass
+from .rss_reader import RssReaderClass, main

@@ -5,14 +5,14 @@ with open("requirements/requirements.txt") as f:
 
 setup(
     version="1.0",
-    packages=find_packages(where="rss-reader", exclude=["tests"]),
+    packages=find_packages(where="rss_reader", exclude=["tests"]),
     install_requires=required,
-    name="rss-reader",
+    name="rss_reader",
     author="Siarhei_Papina",
     author_email="Siarhei_Papina@epam.com",
     description="RSS feed reader",
     classifiers=["Programming Language :: Python :: 3"],
     python_requires=">=3.9",
-    package_dir={"": "rss-reader"},
+    package_dir={"": "rss_reader"},
     include_package_data=True
 )

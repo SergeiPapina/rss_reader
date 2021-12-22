@@ -2,6 +2,6 @@ data/
 venv/
 *.log
 *.jpg
-rss-reader/image_to_asci.py
-rss-reader/output.txt
+rss_reader/image_to_asci.py
+rss_reader/output.txt
 */__pycache__/

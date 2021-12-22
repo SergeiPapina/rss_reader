@@ -1,14 +1,16 @@
 Metadata-Version: 2.1
 Name: rss-reader
-Version: 1.0
+Version: 1.2
 Summary: RSS feed reader
-Home-page: UNKNOWN
+Home-page: https://github.com/SergeiPapina/rss_reader
 Author: Siarhei_Papina
 Author-email: Siarhei_Papina@epam.com
 License: UNKNOWN
 Platform: UNKNOWN
 Classifier: Programming Language :: Python :: 3
-Requires-Python: >=3.9
+Description-Content-Type: text/markdown
 
-UNKNOWN
+RSS feed reader
+
+
 

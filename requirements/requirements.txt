@@ -1,7 +1,5 @@
 beautifulsoup4==4.9.3  # https://pypi.org/project/beautifulsoup4/
-
 requests==2.25.1  # https://pypi.org/project/requests/
-
 flake8==3.9.2
 
 pytest==6.2.4 # https://pypi.org/project/pytest/

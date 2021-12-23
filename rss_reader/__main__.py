@@ -1,4 +1,4 @@
-from .rss_reader import RssReaderClass, main
+from .rss_reader import main
 
 if __name__ == '__main__':
     main()

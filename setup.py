@@ -10,7 +10,7 @@ with open("requirements/requirements.txt") as f:
 
 setup(
     name="rss_reader",
-    version="1.2",
+    version="1.3",
     description="RSS feed reader",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -26,7 +26,8 @@ setup(
     #package_dir={"": "rss_reader"},
     entry_points={
         "console_scripts": [
-            "rss_reader=rss_reader.__main__:main"
+            "rss_reader=rss_reader.__main__:main",
+            "rss-reader=rss_reader.__main__:main"
         ]
     }
 )

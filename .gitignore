@@ -1,5 +1,9 @@
 data/
 venv/
+#.idea/
+
+rss_reader.egg-info/
+
 *.log
 *.jpg
 rss_reader/image_to_asci.py

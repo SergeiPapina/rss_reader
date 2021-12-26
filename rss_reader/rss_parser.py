@@ -4,6 +4,7 @@ import requests
 import re
 import logging
 
+import pandas as pd
 from pathlib import Path
 from bs4 import BeautifulSoup
 from datetime import datetime
@@ -27,6 +28,7 @@ class RssParserClass:
 
         self.flag_json = False
         self.data_dir = ''
+        self.html_path = ''
 
     def set_data_file_name(self, arg_link):
         """this method to format an easy-to-read file name for data cashing"""
@@ -69,6 +71,8 @@ class RssParserClass:
         link_pattern = r"http://|https://"
         media_pattern = r"media:content|enclosure"
 
+        data_to_convert = []
+
         for get_feed in news_list:
             self._list_media.clear()
             self._parsed_data["title"] = get_feed.title.text
@@ -102,8 +106,13 @@ class RssParserClass:
                 logger.info('news output limit reached')
                 break
 
+            data_to_convert.append(self._parsed_data)
+
             self._out_parsed_data(self._parsed_data)
             limit -= 1
+        if self.html_path:
+            df = pd.DataFrame(data_to_convert)
+            df.to_html(self.html_path)
 
     def parse(self, input_args):
         """this method produce RSS items from the RSS link"""

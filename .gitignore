@@ -2,7 +2,7 @@ data/
 venv/
 #.idea/
 
-rss_reader.egg-info/
+rss_reader.egg-info/*
 
 *.log
 *.jpg

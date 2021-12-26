@@ -28,6 +28,9 @@ def get_args(list_args):
     if input_args.date:
         logger.info(f'module be search news feed in cashed files by date: {input_args.date}')
 
+    if input_args.to_html:
+        logger.info('news be converted to HTML file')
+
     return input_args
 
 
@@ -46,17 +49,24 @@ def main():
                            help="Limit news topics if this parameter provided")
     arguments.add_argument("--date", action='store', type=str,
                            help="Date to select cashed news topics if this parameter provided")
-    args = get_args(arguments)
+    arguments.add_argument("--to-html", action="store", type=str, help="convert data feed to HTML file")
 
+    args = get_args(arguments)
     rss = RssParserClass()
     rss.data_dir = settings.data_dir
     rss.flag_json = args.json
+
     rss_cash = CashFeedParser()
     if rss.flag_json:
         rss.set_data_file_name(args.source)
 
+    if args.to_html:
+        rss.html_path = args.to_html
+        rss_cash.html_path = args.to_html
+
     if not args.date:
         rss.parse(args)
+
     if args.date:
         rss_cash.get_cashed_news(args, settings.data_dir)
 

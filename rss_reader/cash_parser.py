@@ -1,7 +1,7 @@
 import logging
 import os
 import json
-import re
+import pandas as pd
 
 from pathlib import Path
 
@@ -12,6 +12,8 @@ logger = logging.getLogger(settings.project_name)
 
 class CashFeedParser:
     """Class for parsing feeds from folder home_directory/rss_data"""
+
+    html_path = ''
 
     def _out_parsed_data(self, out_data):
         """this method outputs parsed from cash information to console"""
@@ -62,27 +64,41 @@ class CashFeedParser:
         source_link = input_args.source
         news_date = input_args.date
         limit = input_args.limit
+        data_to_convert = []
 
         logger.info(f'preparing cashed news with publication date: {news_date}')
         if source_link == 'all':
             for file in os.listdir(data_dir):
-                with open(Path(data_dir, file)) as json_file:
-                    for line in json_file:
-                        one_feed = json.loads(line)
-                        date_from_feed = self._get_feed_date(one_feed['pubdate'])
-                        if date_from_feed == news_date:
-                            if limit == 0:
-                                logger.info('news output limit reached')
-                                return 0
+                try:
+                    file.index('json')
+                    with open(Path(data_dir, file)) as json_file:
+                        for line in json_file:
+                            one_feed = json.loads(line)
+                            date_from_feed = self._get_feed_date(one_feed['pubdate'])
+                            if date_from_feed == news_date:
+                                if limit == 0:
+                                    logger.info('news output limit reached')
+                                    # df = pd.DataFrame(data_to_convert)
+                                    # df.to_html(self.html_path)
+                                    return 0
 
-                            self._out_parsed_data(one_feed)
-                            limit -= 1
+                                data_to_convert.append(one_feed)
+                                if not input_args.verbose:
+                                    self._out_parsed_data(one_feed)
+                                limit -= 1
+                except ValueError:
+                    pass
+
+                if self.html_path:
+                    df = pd.DataFrame(data_to_convert)
+                    df.to_html(self.html_path)
         else:
             for file in os.listdir(data_dir):
                 name_link = source_link.split('/')
                 pattern_name_link = name_link[2].replace(".", "-")
                 try:
                     file.index(pattern_name_link)
+                    file.index('json')
                     with open(Path(data_dir, file)) as json_file:
                         for line in json_file:
                             one_feed = json.loads(line)
@@ -92,12 +108,15 @@ class CashFeedParser:
                                     logger.info('news output limit reached')
                                     return 0
 
-                                self._out_parsed_data(one_feed)
+                                data_to_convert.append(one_feed)
+                                if not input_args.verbose:
+                                    self._out_parsed_data(one_feed)
                                 limit -= 1
+                    if self.html_path:
+                        df = pd.DataFrame(data_to_convert)
+                        df.to_html(self.html_path)
                 except ValueError:
                     pass
-
-
 
         if limit == input_args.limit:
             logger.info("there are not news for selected source and date,"
